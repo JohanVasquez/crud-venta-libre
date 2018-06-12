@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load bootstrap3 %}
+<html lang="en">
+    <head>
+    </head>
+    <body>
+
+        <h2>Venta</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-sm-4">
+                    {% bootstrap_field form.producto %}
+                </div>
+                <div class="col-sm-4">
+                    {% bootstrap_field form.unidades_ventidas %}
+                </div>
+                <div class="col-sm-4">
+                    {% bootstrap_field form.fecha_venta %}
+                </div>
+            </div>
+
+            {% buttons %}
+                <button type="submit" class="btn btn-primary pull-right">
+                  <i class="fa fa-edit"></i>
+                  {% if object %} Editar {% else %} Registrar {% endif %}
+                </button>
+            {% endbuttons %}
+        </form>
+    </body>
+</html>

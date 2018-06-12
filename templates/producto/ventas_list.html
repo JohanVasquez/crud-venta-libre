@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        </style>
+    </head>
+    <body>
+        <h2>Tabla de productos vendidos</h2>
+        <h6><a href="{% url 'producto:grafica_venta'%}">Estadisticas</a></h6>
+        <h4><a href="{% url 'producto:crear_venta'%}">Registrar Venta</a></h4>
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Uni. Vendidas</th>
+                    <th>Fecha</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ventas in object_list %}
+                    <tr>
+                        <td>{{ ventas.producto }}</td>
+                        <td>{{ ventas.unidades_ventidas }}</td>
+                        <td>{{ ventas.fecha_venta }}</td>
+                        <td><a href="{% url 'producto:editar_venta' ventas.pk%}">Editar</a></td>
+                        <td><a href="{% url 'producto:eliminar_venta' ventas.pk%}">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

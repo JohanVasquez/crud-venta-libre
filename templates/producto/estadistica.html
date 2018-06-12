@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="{% static 'ChartistJS/chartist.min.css' %}" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+        <h2>Estadistica de ventas</h2>
+        <div class="ct-chart"></div>
+    </body>
+    <script src="{% static 'ChartistJS/chartist.min.js' %}" type="text/javascript"></script>
+    <script>
+        new Chartist.Bar('.ct-chart', {
+          labels: ['Total de productos ventidos', 'Cantidad total vendida'],
+          series: [{{ productos_ventido }}, {{ cantidad_total_vendida }}]
+        }, {
+          distributeSeries: true
+        });
+
+    </script>
+</html>
